@@ -1,103 +1,70 @@
-import Image from "next/image";
+"use client"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import CyberParticles from "@/components/Particles"
 
-export default function Home() {
+export default function Hero() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+       
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+      {/* Gradient background + glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-950 via-teal-900 to-black animate-gradient-x"></div>
+      <div className="absolute inset-0 flex justify-center items-center">
+        <div className="w-[500px] h-[500px] bg-emerald-600/30 rounded-full blur-3xl animate-pulse"></div>
+      </div>
+
+      {/* Cyber particles */}
+        <CyberParticles count={80} />
+
+      {/* Content */}
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-10 text-6xl md:text-8xl font-extrabold tracking-tight 
+                   bg-gradient-to-r from-green-400 via-yellow-300 to-emerald-300 
+                   bg-clip-text text-transparent drop-shadow-lg animate-shimmer"
+      >
+        Francisco Sucatti
+      </motion.h1>
+      
+
+
+
+      <motion.h2
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="relative z-10 text-xl md:text-2xl text-gray-300 mt-4"
+      >
+        Full-Stack Developer & Creator
+      </motion.h2>
+
+      {/* Call-to-action buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="mt-8 flex gap-6"
+      >
+        <Link
+          href="/projects"
+          className="px-6 py-3 bg-emerald-500/20 border border-emerald-400 rounded-lg 
+                     text-emerald-300 hover:bg-emerald-400 hover:text-black transition-all duration-300"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          View Projects
+        </Link>
+        <Link
+          href="/contact"
+          className="px-6 py-3 bg-yellow-500/20 border border-yellow-400 rounded-lg 
+                     text-yellow-300 hover:bg-yellow-400 hover:text-black transition-all duration-300"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          Contact Me
+        </Link>
+      </motion.div>
+    </section>
+  )
 }
+
