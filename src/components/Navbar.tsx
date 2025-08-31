@@ -1,5 +1,5 @@
 "use client"
-
+import React from "react"
 import { HomeIcon, UserIcon, FolderIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 import { usePathname } from "next/navigation"
 
@@ -9,7 +9,7 @@ function NavItem({
   label,
 }: {
   href: string
-  icon: any
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
   label: string
 }) {
   const pathname = usePathname()
