@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Calculator App",
     description: "A simple yet stylish calculator built with React and Tailwind.",
-    link: "https://www.youtube.com/watch?v=9vZUbyM5PxY",
+    link: "https://calculator-fsucatti-13.vercel.app/",
     image: "calculator",
   },
   {
