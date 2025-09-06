@@ -30,7 +30,7 @@ const projects = [
   {
     title: "MongoDB Project",
     description: "Full CRUD application using MongoDB, Express, and Node.js.",
-    link: "https://www.youtube.com/watch?v=rCSytPi8e5U",
+    link: "https://journal-app-francisco-sucatti.vercel.app/",
     image: "mongodb",
   },
   {
