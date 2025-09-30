@@ -10,16 +10,16 @@ const projects = [
     image: "portfolio", // no extension, just base name
   },
   {
-    title: "E-commerce App",
-    description: "Full-stack shop with authentication, Stripe payments, and admin panel.",
-    link: "https://www.youtube.com/watch?v=5eveNk3o1ME",
-    image: "ecommerce",
+    title: "Live Collaboration App",
+    description: "Real-time collaboration tool for teams. built with Socket.io, Next.js, and Tailwind.",
+    link: "https://collab-app-fsucatti.vercel.app/docs",
+    image: "collaboration",
   },
   {
-    title: "Chatbot AI",
-    description: "Conversational assistant using OpenAI API with real-time streaming.",
-    link: "https://www.youtube.com/watch?v=11ki_jMfCrI",
-    image: "chatbot",
+    title: "Interactive Dashboard",
+    description: "A data visualization dashboard using Next.js and Tailwind.",
+    link: "https://interactive-dashboard-fsucatti.vercel.app/",
+    image: "dashboard",
   },
   {
     title: "Calculator App",
@@ -28,7 +28,7 @@ const projects = [
     image: "calculator",
   },
   {
-    title: "MongoDB Project",
+    title: "Journal App",
     description: "Full CRUD application using MongoDB, Express, and Node.js.",
     link: "https://journal-app-francisco-sucatti.vercel.app/",
     image: "mongodb",
