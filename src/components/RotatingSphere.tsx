@@ -2,7 +2,7 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber"
 import { OrbitControls, Environment, Stars } from "@react-three/drei"
 import { Mesh, TextureLoader, AdditiveBlending } from "three"
-import { useRef } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 
 function Earth() {
   const meshRef = useRef<Mesh>(null!)
@@ -38,6 +38,51 @@ function Atmosphere() {
   )
 }
 
+function EnvironmentLighting() {
+  const [shouldRenderEnvironment, setShouldRenderEnvironment] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+
+    fetch("/hdri/venice_sunset_1k.hdr", { method: "HEAD" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load /hdri/venice_sunset_1k.hdr (status ${response.status})`)
+        }
+
+        if (!cancelled) {
+          setShouldRenderEnvironment(true)
+        }
+      })
+      .catch((error) => {
+        if (process.env.NODE_ENV !== "production") {
+          console.warn(
+            "[RotatingSphere] Environment map not available, falling back to default lighting.",
+            error,
+          )
+        }
+
+        if (!cancelled) {
+          setShouldRenderEnvironment(false)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  if (!shouldRenderEnvironment) {
+    return null
+  }
+
+  return (
+    <Suspense fallback={null}>
+      <Environment files="/hdri/venice_sunset_1k.hdr" />
+    </Suspense>
+  )
+}
+
 export default function RotatingSphere() {
   return (
     <Canvas
@@ -45,13 +90,13 @@ export default function RotatingSphere() {
       camera={{ position: [0, 0, 6], fov: 105 }}
     >
       <Stars
-        radius={200}  // much larger so edges are out of view
-        depth={120}   // how far stars go
-        count={12000}  // number of stars
+        radius={200} // much larger so edges are out of view
+        depth={120} // how far stars go
+        count={12000} // number of stars
         factor={4}
         saturation={0}
         fade
-        speed={1}   
+        speed={1}
       />
 
       {/* Lights */}
@@ -65,7 +110,7 @@ export default function RotatingSphere() {
       {/*<Atmosphere /> */}
 
       {/* Subtle reflections */}
-      <Environment preset="sunset" />
+      <EnvironmentLighting />
 
       <OrbitControls enableZoom={true} enablePan={false} />
     </Canvas>
